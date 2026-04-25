@@ -352,6 +352,13 @@ app.post('/api/properties/search', async (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 3000;
+app.get('/info', (req, res) => {
+  res.json({
+    status: "Success",
+    message: "India Land Registry Backend is active",
+    timestamp: new Date()
+  });
+});
 app.listen(PORT, () => {
     console.log(`🚀 Land Registry API running on port ${PORT}`);
     console.log(`🔐 Admin Password: ${ADMIN_PASSWORD}`);
