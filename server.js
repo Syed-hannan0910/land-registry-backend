@@ -4,6 +4,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv')
 // ... other requires like dotenv or ethers
 
 const app = express(); // 1. INITIALIZE FIRST
@@ -18,8 +19,6 @@ const helmet = require('helmet');
 const { ethers } = require('ethers');
 const multer = require('multer');
 const Tesseract = require('tesseract.js');
-
-const app = express();
 
 // Middleware
 app.use(helmet());
