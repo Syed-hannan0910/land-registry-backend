@@ -11,7 +11,7 @@ const app = express(); // 1. INITIALIZE FIRST
 
 // 2. NOW APPLY CORS
 app.use(cors({ 
-  origin: 'https://land-registry-frontend-swart.vercel.app' 
+  origin: 'https://land-registry-frontend-swart.vercel.app'
 }));
 
 app.use(express.json());
