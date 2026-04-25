@@ -21,6 +21,13 @@ const multer = require('multer');
 const Tesseract = require('tesseract.js');
 
 // Middleware
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; font-src 'self' data: https://land-registry-backend-d154.onrender.com;"
+  );
+  next();
+});
 app.use(helmet());
 app.use(cors({ origin: process.env.FRONTEND_URL || '*', credentials: true }));
 app.use(express.json());
