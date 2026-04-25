@@ -4,7 +4,16 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-app.use(cors({ origin: 'https://land-registry-frontend-swart.vercel.app/' }));
+// ... other requires like dotenv or ethers
+
+const app = express(); // 1. INITIALIZE FIRST
+
+// 2. NOW APPLY CORS
+app.use(cors({ 
+  origin: 'https://land-registry-frontend-swart.vercel.app' 
+}));
+
+app.use(express.json());
 const helmet = require('helmet');
 const { ethers } = require('ethers');
 const multer = require('multer');
