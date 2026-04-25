@@ -4,6 +4,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+app.use(cors({ origin: 'https://land-registry-frontend-swart.vercel.app/' }));
 const helmet = require('helmet');
 const { ethers } = require('ethers');
 const multer = require('multer');
