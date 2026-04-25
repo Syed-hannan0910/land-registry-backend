@@ -1,0 +1,1228 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_level",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string",
+        "name": "_officerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_designation",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_proofHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_remarks",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_gpsCoordinates",
+        "type": "string"
+      }
+    ],
+    "name": "addVerification",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "role",
+        "type": "string"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "deceased",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "heirs",
+        "type": "address[]"
+      }
+    ],
+    "name": "InheritanceRecorded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "mutationDate",
+        "type": "uint256"
+      }
+    ],
+    "name": "MutationRecorded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "fromOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "toOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "PropertyRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "level",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "officer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "PropertyVerified",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_deceasedOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_deceasedName",
+        "type": "string"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_heirs",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_heirShares",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string",
+        "name": "_willHash",
+        "type": "string"
+      }
+    ],
+    "name": "recordInheritance",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_oldOwnerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_newOwnerName",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_newOwnerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_reason",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_mutationOrderHash",
+        "type": "string"
+      }
+    ],
+    "name": "recordMutation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_ownerDID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_ownerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_state",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_district",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_village",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_propertyType",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_totalArea",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_latitude",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_longitude",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_documentsHash",
+        "type": "string"
+      }
+    ],
+    "name": "registerProperty",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_newOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_newOwnerName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_saleValue",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_stampDuty",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_documentHash",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "_taxCompliant",
+        "type": "bool"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "allULPINs",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllProperties",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      }
+    ],
+    "name": "getInheritanceRecords",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "inheritanceDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "deceasedOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "deceasedName",
+            "type": "string"
+          },
+          {
+            "internalType": "address[]",
+            "name": "heirs",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "heirShares",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "string",
+            "name": "willHash",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "probateComplete",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct IndiaLandRegistry.InheritanceRecord[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      }
+    ],
+    "name": "getMutations",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "mutationDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "oldOwnerName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "newOwnerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "oldOwnerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "newOwnerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "reason",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "mutationOrderHash",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct IndiaLandRegistry.MutationRecord[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      }
+    ],
+    "name": "getProperty",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "ulpin",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "currentOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "ownerName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "ownerDID",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "district",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "village",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "propertyType",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalArea",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "latitude",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "longitude",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "documentsHash",
+            "type": "string"
+          },
+          {
+            "internalType": "enum IndiaLandRegistry.VerificationStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "registrationDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lastUpdated",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "hasDispute",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct IndiaLandRegistry.Property",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      }
+    ],
+    "name": "getPropertyHistory",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "fromOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "toOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "enum IndiaLandRegistry.TransactionType",
+            "name": "txType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "transactionValue",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "documentHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "remarks",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "stampDuty",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "taxCompliant",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct IndiaLandRegistry.HistoricalRecord[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getStatistics",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_ulpin",
+        "type": "string"
+      }
+    ],
+    "name": "getVerifications",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "officer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "officerName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "designation",
+            "type": "string"
+          },
+          {
+            "internalType": "uint8",
+            "name": "level",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "proofHash",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "remarks",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct IndiaLandRegistry.Verification[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "inheritanceRecords",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "inheritanceDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "deceasedOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "deceasedName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "willHash",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "probateComplete",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "mutations",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "mutationDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "oldOwnerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "newOwnerName",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "oldOwnerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "newOwnerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "reason",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "mutationOrderHash",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "approved",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "ownerProperties",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "patwaris",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "properties",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "ulpin",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "ownerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "ownerDID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "state",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "district",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "village",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "propertyType",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalArea",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "latitude",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "longitude",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "documentsHash",
+        "type": "string"
+      },
+      {
+        "internalType": "enum IndiaLandRegistry.VerificationStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "registrationDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lastUpdated",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasDispute",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "exists",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "propertyHistory",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "fromOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "toOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "enum IndiaLandRegistry.TransactionType",
+        "name": "txType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "transactionValue",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "documentHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "remarks",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "stampDuty",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "taxCompliant",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "registrars",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "tehsildars",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalMutations",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalProperties",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalTransactions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "verifications",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "officer",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "officerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "designation",
+        "type": "string"
+      },
+      {
+        "internalType": "uint8",
+        "name": "level",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string",
+        "name": "proofHash",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "remarks",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
